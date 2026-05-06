@@ -128,3 +128,84 @@
     @apply font-sans;
   }
 }
+
+/* === Soothe and Scratch brand tokens === */
+:root {
+  --color-bg: #FBF7F2;
+  --color-ink: #2A1F2D;
+  --color-rose: #D4A5A5;
+  --color-sage: #A8B5A0;
+  --color-gold: #C9A96E;
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Register brand colours as Tailwind theme tokens */
+@theme inline {
+  --color-bg: #FBF7F2;
+  --color-ink: #2A1F2D;
+  --color-rose: #D4A5A5;
+  --color-sage: #A8B5A0;
+  --color-gold: #C9A96E;
+
+  /* Font family placeholders — next/font variables assigned in Task 3 */
+  --font-display: var(--font-fraunces, Georgia, serif);
+  /* Note: --font-sans already declared above; override with brand fallback */
+  --font-sans: var(--font-dm-sans, system-ui, sans-serif);
+}
+
+/* Base styles */
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--color-ink);
+  color: var(--color-bg);
+  border-radius: 0 0 0.25rem 0.25rem;
+  font-size: 0.875rem;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus ring — gold for all interactive elements */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* Marquee animation (used by Marquee section component) */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 60s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Reduced motion — disable all animations */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
