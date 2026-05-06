@@ -1,16 +1,17 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import type { ReactNode } from 'react'
 import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
-
-export function SmoothScroll({ children }: { children: React.ReactNode }) {
+export function SmoothScroll({ children }: { children: ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null)
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
+
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReduced) return
 
@@ -26,6 +27,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     return () => {
       lenis.destroy()
       gsap.ticker.remove(tickerFn)
+      gsap.ticker.lagSmoothing(500, 33)
     }
   }, [])
 
