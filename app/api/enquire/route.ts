@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
   const result = enquirySchema.safeParse(body)
   if (!result.success) {
     return NextResponse.json(
-      { error: 'Validation failed', issues: result.error.flatten().fieldErrors },
+      { error: 'Validation failed', fieldErrors: result.error.flatten().fieldErrors },
       { status: 422 }
     )
   }
