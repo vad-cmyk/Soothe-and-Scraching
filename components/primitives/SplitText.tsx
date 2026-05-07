@@ -2,6 +2,7 @@
 
 import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { useRef } from 'react'
+import type { RefObject } from 'react'
 import { wordReveal, staggerContainer } from '@/lib/motion'
 
 interface Props {
@@ -21,7 +22,7 @@ export function SplitText({ text, className, as: Tag = 'h1' }: Props) {
 
   return (
     <MotionTag
-      ref={ref as React.RefObject<HTMLHeadingElement>}
+      ref={ref as RefObject<HTMLHeadingElement>}
       className={className}
       variants={staggerContainer}
       initial={prefersReduced ? 'visible' : 'hidden'}

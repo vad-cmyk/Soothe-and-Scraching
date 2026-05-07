@@ -12,8 +12,11 @@ export function SectionDivider() {
     <div ref={ref} className="w-full overflow-hidden py-2" aria-hidden="true">
       <motion.div
         className="h-px"
-        style={{ backgroundColor: 'color-mix(in srgb, var(--color-ink) 10%, transparent)' }}
-        initial={{ scaleX: prefersReduced ? 1 : 0, originX: 0 }}
+        style={{
+          backgroundColor: 'color-mix(in srgb, var(--color-ink) 10%, transparent)',
+          originX: 0,
+        }}
+        initial={{ scaleX: prefersReduced ? 1 : 0 }}
         animate={{ scaleX: inView ? 1 : 0 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       />
