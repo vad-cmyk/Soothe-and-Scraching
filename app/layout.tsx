@@ -20,8 +20,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${fraunces.variable} ${dmSans.variable}`}>
       <body>
-        <a href="#main-content" className="skip-link">Skip to content</a>
         <SmoothScroll>
+          <a href="#main-content" className="skip-link">Skip to content</a>
           <Cursor />
           <Nav />
           <PageTransition>
