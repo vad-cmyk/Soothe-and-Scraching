@@ -1,8 +1,6 @@
 import { Resend } from 'resend'
 import type { EnquiryInput } from './validation'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 const SERVICE_LABELS: Record<EnquiryInput['service'], string> = {
   scalp: 'Scalp & Hair (60 min)',
   touch: 'Light Touch & Tracing (60 min)',
@@ -12,6 +10,7 @@ const SERVICE_LABELS: Record<EnquiryInput['service'], string> = {
 }
 
 export async function sendEnquiryEmail(data: EnquiryInput): Promise<void> {
+  const resend = new Resend(process.env.RESEND_API_KEY)
   const to = process.env.ENQUIRY_EMAIL
   if (!to) throw new Error('ENQUIRY_EMAIL environment variable is not set')
 
