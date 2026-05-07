@@ -5,7 +5,7 @@ export function Bio() {
   return (
     <section className="py-16 px-6 lg:px-12 max-w-4xl mx-auto">
       {about.bio.map((para, i) => (
-        <RevealOnScroll key={i} delay={i * 0.1}>
+        <RevealOnScroll key={para.slice(0, 24)} delay={i * 0.1}>
           <p
             className={`font-sans text-base text-ink/75 leading-[1.85] mb-6 ${
               i === 0

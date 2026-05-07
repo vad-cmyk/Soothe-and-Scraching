@@ -22,15 +22,18 @@ export function Values() {
             className="text-left p-8 group focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-inset"
             onClick={() => setActive(active === i ? null : i)}
             aria-expanded={active === i}
+            aria-controls={`value-panel-${i}`}
           >
             <RevealOnScroll delay={i * 0.1}>
-              <p className="font-sans text-xs uppercase tracking-[0.15em] text-ink/30 mb-4">0{i + 1}</p>
+              <p className="font-sans text-xs uppercase tracking-[0.15em] text-ink/30 mb-4">{String(i + 1).padStart(2, '0')}</p>
               <h3 className="font-display font-light text-3xl text-ink mb-4 group-hover:text-rose transition-colors duration-300">
                 {value.name}
               </h3>
-              <AnimatePresence>
-                {active === i && (
+              <AnimatePresence initial={false}>
+                {active === i ? (
                   <motion.p
+                    key="panel"
+                    id={`value-panel-${i}`}
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
@@ -39,13 +42,19 @@ export function Values() {
                   >
                     {value.description}
                   </motion.p>
+                ) : (
+                  <motion.span
+                    key="hint"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="font-sans text-xs text-ink/30 group-hover:text-ink/50 transition-colors"
+                  >
+                    Read more
+                  </motion.span>
                 )}
               </AnimatePresence>
-              {active !== i && (
-                <span className="font-sans text-xs text-ink/30 group-hover:text-ink/50 transition-colors">
-                  Read more
-                </span>
-              )}
             </RevealOnScroll>
           </button>
         ))}
