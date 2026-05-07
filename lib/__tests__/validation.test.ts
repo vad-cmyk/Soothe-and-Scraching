@@ -37,8 +37,13 @@ describe('enquirySchema', () => {
     expect(result.success).toBe(false)
   })
 
-  it('accepts optional fields as undefined', () => {
-    const result = enquirySchema.safeParse(valid)
+  it('accepts optional fields when provided', () => {
+    const result = enquirySchema.safeParse({
+      ...valid,
+      preferredTimes: 'Weekday evenings',
+      additionalInfo: 'No nut allergies',
+      website: '',
+    })
     expect(result.success).toBe(true)
   })
 })
