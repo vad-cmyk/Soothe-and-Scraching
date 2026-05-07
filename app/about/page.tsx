@@ -8,6 +8,12 @@ import { ClosingCta } from '@/components/sections/home/ClosingCta'
 export const metadata: Metadata = {
   title: 'About Elizabeth',
   description: 'Meet Elizabeth, mobile ASMR practitioner based in South London. Learn about ASMR, the research behind it, and how Soothe and Scratch works.',
+  openGraph: {
+    title: 'About Elizabeth | Soothe and Scratch',
+    description: 'Meet Elizabeth, mobile ASMR practitioner based in South London.',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image' },
 }
 
 export default function AboutPage() {

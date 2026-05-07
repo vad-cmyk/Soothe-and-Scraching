@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://sootheandscratch.co.uk
+
+# Sitemaps
+Sitemap: https://sootheandscratch.co.uk/sitemap.xml

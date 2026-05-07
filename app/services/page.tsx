@@ -9,6 +9,12 @@ import { services } from '@/content/copy'
 export const metadata: Metadata = {
   title: 'Services & Pricing',
   description: 'Mobile ASMR services in London: Scalp & Hair, Light Touch, Extended, and Combo sessions. From £120.',
+  openGraph: {
+    title: 'Services & Pricing | Soothe and Scratch',
+    description: 'Mobile ASMR services in London from £120. Scalp, light touch, extended, and combo sessions.',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image' },
 }
 
 export default function ServicesPage() {

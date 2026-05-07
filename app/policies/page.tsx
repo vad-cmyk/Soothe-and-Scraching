@@ -6,6 +6,12 @@ import { policies } from '@/content/copy'
 export const metadata: Metadata = {
   title: 'Policies',
   description: 'Soothe and Scratch policies: women-only service, cancellation, hygiene and safety, and privacy.',
+  openGraph: {
+    title: 'Policies | Soothe and Scratch',
+    description: 'Women-only service, cancellation, hygiene and safety, and privacy policies.',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image' },
 }
 
 export default function PoliciesPage() {

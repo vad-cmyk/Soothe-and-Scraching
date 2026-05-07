@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Soothe and Scratch
 
-## Getting Started
+Mobile ASMR website built with Next.js App Router.
 
-First, run the development server:
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create `.env.local`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+RESEND_API_KEY=re_xxxxxxxxxxxx       # Resend API key for enquiry emails
+ENQUIRY_EMAIL=hello@example.com      # Email address to receive enquiries
+SITE_URL=https://sootheandscratch.co.uk  # Used for sitemap generation
+```
 
-## Learn More
+## Content editing
 
-To learn more about Next.js, take a look at the following resources:
+All marketing copy lives in `/content/copy.ts`. Edit this file to update any text on the site. Items marked `TODO:` need replacing with real content from Elizabeth.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Images
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Brand images are in `public/images/`. To swap an image, replace the file with the same name and dimensions.
 
-## Deploy on Vercel
+To add an ambient audio file for the `/experience` page, place an `.mp3` file at `public/audio/ambient.mp3`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy to Vercel. Set the environment variables above in the Vercel project settings.
+
+After deploying, verify the sender domain `sootheandscratch.co.uk` is set up in Resend and DNS records are configured.
+
+## Tech stack
+
+- Next.js 16 App Router + TypeScript
+- Tailwind CSS v4
+- Framer Motion (page animations, scroll reveals)
+- GSAP + ScrollTrigger (Experience page pinned scroll)
+- Lenis (smooth scroll)
+- shadcn/ui (Accordion)
+- Resend (transactional email)
+- React Hook Form + Zod (form validation)
+- next-sitemap (SEO sitemap + robots.txt)

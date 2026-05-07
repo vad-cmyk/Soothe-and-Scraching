@@ -7,6 +7,12 @@ import { experience } from '@/content/copy'
 export const metadata: Metadata = {
   title: 'The Experience',
   description: 'See exactly how a Soothe and Scratch mobile ASMR session works — from enquiry through to rest.',
+  openGraph: {
+    title: 'The Experience | Soothe and Scratch',
+    description: 'See exactly how a mobile ASMR session works — from enquiry through to rest.',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image' },
 }
 
 export default function ExperiencePage() {

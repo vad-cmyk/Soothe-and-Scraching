@@ -16,11 +16,47 @@ export const metadata: Metadata = {
     description: 'Mobile ASMR sessions for women in London and surrounding areas.',
     type: 'website',
   },
+  twitter: { card: 'summary_large_image' },
+}
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Soothe and Scratch',
+  description: 'Mobile ASMR sessions for women in London and surrounding areas.',
+  url: 'https://sootheandscratch.co.uk',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'London',
+    addressRegion: 'Greater London',
+    addressCountry: 'GB',
+  },
+  areaServed: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: 51.5074,
+      longitude: -0.1278,
+    },
+    geoRadius: '30000',
+  },
+  priceRange: '££',
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: '09:00',
+    closes: '21:00',
+  },
+  sameAs: ['https://instagram.com/sootheandscratch'],
 }
 
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
       <Hero />
       <Marquee />
       <WhatIsAsmr />
