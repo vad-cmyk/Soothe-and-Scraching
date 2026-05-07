@@ -22,7 +22,7 @@ export async function sendEnquiryEmail(data: EnquiryInput): Promise<void> {
       <tr><td><strong>Email</strong></td><td>${escapeHtml(data.email)}</td></tr>
       <tr><td><strong>Contact</strong></td><td>${escapeHtml(data.contactMethod)}</td></tr>
       <tr><td><strong>Area</strong></td><td>${escapeHtml(data.postcode)}</td></tr>
-      <tr><td><strong>Service</strong></td><td>${SERVICE_LABELS[data.service]}</td></tr>
+      <tr><td><strong>Service</strong></td><td>${escapeHtml(SERVICE_LABELS[data.service])}</td></tr>
       ${data.preferredTimes ? `<tr><td><strong>Preferred times</strong></td><td>${escapeHtml(data.preferredTimes)}</td></tr>` : ''}
       ${data.additionalInfo ? `<tr><td><strong>Additional info</strong></td><td>${escapeHtml(data.additionalInfo)}</td></tr>` : ''}
     </table>
