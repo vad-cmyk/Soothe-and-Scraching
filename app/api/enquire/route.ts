@@ -10,17 +10,17 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
   }
 
+  // Honeypot — check before validation so bots never see field-name hints in error responses
+  if (typeof (body as Record<string, unknown>).website === 'string' && (body as Record<string, unknown>).website) {
+    return NextResponse.json({ ok: true })
+  }
+
   const result = enquirySchema.safeParse(body)
   if (!result.success) {
     return NextResponse.json(
       { error: 'Validation failed', fieldErrors: result.error.flatten().fieldErrors },
       { status: 422 }
     )
-  }
-
-  // Honeypot — return 200 silently to fool bots
-  if (result.data.website) {
-    return NextResponse.json({ ok: true })
   }
 
   try {
