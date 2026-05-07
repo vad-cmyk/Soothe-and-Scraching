@@ -123,10 +123,13 @@ export default function EnquirePage() {
                       type="text"
                       placeholder="Your name"
                       className={inputClass}
+                      aria-required="true"
+                      aria-invalid={!!errors.name}
+                      aria-describedby={errors.name ? 'name-error' : undefined}
                       {...register('name')}
                     />
                     {errors.name && (
-                      <p className={errorClass}>{errors.name.message}</p>
+                      <p id="name-error" role="alert" className={errorClass}>{errors.name.message}</p>
                     )}
                   </div>
 
@@ -140,10 +143,13 @@ export default function EnquirePage() {
                       type="email"
                       placeholder="your@email.com"
                       className={inputClass}
+                      aria-required="true"
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
                       {...register('email')}
                     />
                     {errors.email && (
-                      <p className={errorClass}>{errors.email.message}</p>
+                      <p id="email-error" role="alert" className={errorClass}>{errors.email.message}</p>
                     )}
                   </div>
 
@@ -157,10 +163,13 @@ export default function EnquirePage() {
                       type="text"
                       placeholder="+44 7700 000000 or @yourhandle"
                       className={inputClass}
+                      aria-required="true"
+                      aria-invalid={!!errors.contactMethod}
+                      aria-describedby={errors.contactMethod ? 'contactMethod-error' : undefined}
                       {...register('contactMethod')}
                     />
                     {errors.contactMethod && (
-                      <p className={errorClass}>{errors.contactMethod.message}</p>
+                      <p id="contactMethod-error" role="alert" className={errorClass}>{errors.contactMethod.message}</p>
                     )}
                   </div>
 
@@ -174,10 +183,13 @@ export default function EnquirePage() {
                       type="text"
                       placeholder="e.g. SE1, Brixton, Richmond"
                       className={inputClass}
+                      aria-required="true"
+                      aria-invalid={!!errors.postcode}
+                      aria-describedby={errors.postcode ? 'postcode-error' : undefined}
                       {...register('postcode')}
                     />
                     {errors.postcode && (
-                      <p className={errorClass}>{errors.postcode.message}</p>
+                      <p id="postcode-error" role="alert" className={errorClass}>{errors.postcode.message}</p>
                     )}
                   </div>
 
@@ -190,6 +202,9 @@ export default function EnquirePage() {
                       id="service"
                       className={`${inputClass} cursor-pointer appearance-none`}
                       defaultValue=""
+                      aria-required="true"
+                      aria-invalid={!!errors.service}
+                      aria-describedby={errors.service ? 'service-error' : undefined}
                       {...register('service')}
                     >
                       <option value="" disabled>
@@ -202,7 +217,7 @@ export default function EnquirePage() {
                       <option value="not-sure">Not sure yet</option>
                     </select>
                     {errors.service && (
-                      <p className={errorClass}>{errors.service.message}</p>
+                      <p id="service-error" role="alert" className={errorClass}>{errors.service.message}</p>
                     )}
                   </div>
 
@@ -216,10 +231,12 @@ export default function EnquirePage() {
                       rows={3}
                       placeholder="e.g. weekday mornings, Saturday afternoons…"
                       className={`${inputClass} resize-none`}
+                      aria-invalid={!!errors.preferredTimes}
+                      aria-describedby={errors.preferredTimes ? 'preferredTimes-error' : undefined}
                       {...register('preferredTimes')}
                     />
                     {errors.preferredTimes && (
-                      <p className={errorClass}>{errors.preferredTimes.message}</p>
+                      <p id="preferredTimes-error" role="alert" className={errorClass}>{errors.preferredTimes.message}</p>
                     )}
                   </div>
 
@@ -233,10 +250,12 @@ export default function EnquirePage() {
                       rows={3}
                       placeholder="Any questions, sensitivities, or context Elizabeth should know…"
                       className={`${inputClass} resize-none`}
+                      aria-invalid={!!errors.additionalInfo}
+                      aria-describedby={errors.additionalInfo ? 'additionalInfo-error' : undefined}
                       {...register('additionalInfo')}
                     />
                     {errors.additionalInfo && (
-                      <p className={errorClass}>{errors.additionalInfo.message}</p>
+                      <p id="additionalInfo-error" role="alert" className={errorClass}>{errors.additionalInfo.message}</p>
                     )}
                   </div>
 
@@ -254,6 +273,7 @@ export default function EnquirePage() {
                       <motion.p
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
+                        role="alert"
                         className={`${errorClass} mt-4`}
                       >
                         {enquire.errorMessage}
